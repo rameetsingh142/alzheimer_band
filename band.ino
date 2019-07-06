@@ -10,6 +10,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #define OLED_RESET D5
+#define motor D6
 int buz=0;
 String ch;
 const int buzzer = D3;
@@ -43,6 +44,7 @@ Wire.endTransmission(true);
     display.begin(SSD1306_SWITCHCAPVCC, 0x3C); /* Initialize display with address 0x3C */
   display.clearDisplay(); 
   pinMode(buzzer, OUTPUT);
+   pinMode(motor,OUTPUT);
 }
 
 void loop() {
@@ -61,8 +63,13 @@ display.setTextSize(1);
   display.clearDisplay(); 
   if(buz==1){
    tone(buzzer, 1000); // Send 1KHz sound signal...
-  delay(1000);        // ...for 1 sec
+  delay(500);        // ...for 1 sec
    noTone(buzzer); 
+    
+  digitalWrite(motor,HIGH);
+  delay(1000);
+    digitalWrite(motor,LOW);
+  
       
   }
   
