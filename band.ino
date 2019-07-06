@@ -48,7 +48,10 @@ Wire.endTransmission(true);
 }
 
 void loop() {
-
+  
+    String ab ="rameet";
+     Firebase.pushString("rum",ab);
+  
    String ch=Firebase.getString("logs");
   buz=Firebase.getInt("num");
 display.setTextSize(1);
