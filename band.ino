@@ -2,15 +2,17 @@
 #include <FirebaseArduino.h>
 
 #include<Wire.h>
-#define FIREBASE_HOST "band-2.firebaseio.com"
-#define FIREBASE_AUTH "DiOzSzTAMloe8WE1OfdbH9EBgYSpqhObcuECj1es"
-#define WIFI_SSID "Rameet"
+#define FIREBASE_HOST "band-76a7a.firebaseio.com"
+#define FIREBASE_AUTH "kZSXgrvEVDKDv8TPzyaAjyXL7sXvf4lsC4HG233u"
+#define WIFI_SSID "rameet"
 #define WIFI_PASSWORD "0142PPpp"
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #define OLED_RESET D5
 #define motor D6
+#define motor2 D7
+#define motor3 D8
 int buz=0;
 String ch;
 const int buzzer = D3;
@@ -45,16 +47,16 @@ Wire.endTransmission(true);
   display.clearDisplay(); 
   pinMode(buzzer, OUTPUT);
    pinMode(motor,OUTPUT);
+    pinMode(motor2,OUTPUT); 
+    pinMode(motor3,OUTPUT);
 }
 
 void loop() {
-  
-    String ab ="rameet";
-     Firebase.pushString("rum",ab);
+
   
    String ch=Firebase.getString("logs");
   buz=Firebase.getInt("num");
-display.setTextSize(1);
+display.setTextSize(2);
     display.setTextColor(WHITE);
       display.setCursor(0,0);
       
@@ -72,7 +74,13 @@ display.setTextSize(1);
   digitalWrite(motor,HIGH);
   delay(1000);
     digitalWrite(motor,LOW);
-  
+     digitalWrite(motor2,HIGH);
+  delay(1000);
+    digitalWrite(motor2,LOW);
+     digitalWrite(motor3,HIGH);
+  delay(1000);
+    digitalWrite(motor3,LOW);
+    
       
   }
   
